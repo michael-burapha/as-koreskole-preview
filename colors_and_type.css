@@ -1,0 +1,206 @@
+/* ============================================================
+   AS Køreskole — Design Tokens
+   ------------------------------------------------------------
+   Color, type, spacing, radius, shadow, motion.
+   Import once in the document head; use the variables everywhere.
+   ============================================================ */
+
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Manrope:wght@300;400;500;600;700;800&display=swap");
+
+:root {
+  /* ---------- COLOR: Traffic-light brand ---------- */
+  --go:           #1FA34A;        /* primary CTA — sign up, success */
+  --go-strong:    #178039;        /* hover */
+  --go-soft:      #E6F4EC;        /* tinted background */
+
+  --caution:      #FFC42E;        /* secondary CTA — courses, browse */
+  --caution-strong:#E5A800;
+  --caution-soft: #FFF6D9;
+
+  --stop:         #E63946;        /* tertiary CTA — contact, phone */
+  --stop-strong:  #C72A37;
+  --stop-soft:    #FCE5E7;
+
+  /* ---------- COLOR: Surfaces & ink ---------- */
+  --ink:          #0E1213;        /* primary text */
+  --ink-2:        #3C434A;        /* secondary text */
+  --ink-3:        #6C757D;        /* tertiary / meta */
+  --ink-4:        #9AA0A6;        /* disabled, hairlines on dark */
+
+  --asphalt:      #1A1E22;        /* dark surfaces (footer, overlay) */
+  --asphalt-2:    #2A2F35;
+  --asphalt-3:    #3A4047;
+
+  --paper:        #FFFFFF;        /* default surface */
+  --paper-2:      #F6F6F3;        /* warm off-white, section bg */
+  --paper-3:      #ECEBE5;        /* warmer, used for divider blocks */
+  --line:         #E5E5DF;        /* hairline border */
+  --line-strong:  #D4D3CC;
+
+  /* ---------- COLOR: Functional ---------- */
+  --focus:        #3B5BFF;        /* keyboard focus outline */
+  --link:         #1B4DBF;        /* inline links in body */
+  --error:        #B42318;        /* form errors (NOT the same as --stop) */
+  --warn:         #B54708;
+  --info:         #1F4CD3;
+
+  /* ---------- TYPOGRAPHY ---------- */
+  --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-text:    "Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono:    ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+
+  /* Type scale — fluid, 8px-aligned at md */
+  --t-display:    clamp(2.5rem, 1.6rem + 4.5vw, 4.75rem);   /* hero H1 */
+  --t-h1:         clamp(2rem,   1.4rem + 3vw,   3.25rem);   /* page H1 */
+  --t-h2:         clamp(1.625rem,1.2rem + 1.8vw,2.25rem);   /* section H2 */
+  --t-h3:         clamp(1.25rem,1rem + 1vw,    1.5rem);     /* H3 */
+  --t-h4:         1.125rem;                                  /* H4 */
+  --t-lead:       clamp(1.125rem, 1rem + 0.4vw, 1.25rem);   /* hero lead */
+  --t-body:       1rem;
+  --t-small:      0.875rem;
+  --t-xs:         0.75rem;
+
+  --lh-tight:     1.05;
+  --lh-snug:      1.2;
+  --lh-normal:    1.5;
+  --lh-relaxed:   1.65;
+
+  --tracking-tight: -0.025em;
+  --tracking-snug:  -0.015em;
+  --tracking-wide:  0.04em;
+  --tracking-cap:   0.12em;       /* ALL CAPS labels */
+
+  /* ---------- SPACING ---------- */
+  --s-1:  4px;
+  --s-2:  8px;
+  --s-3:  12px;
+  --s-4:  16px;
+  --s-5:  24px;
+  --s-6:  32px;
+  --s-7:  48px;
+  --s-8:  64px;
+  --s-9:  96px;
+  --s-10: 128px;
+
+  /* ---------- RADIUS ---------- */
+  --r-xs:   4px;
+  --r-sm:   8px;
+  --r-md:   14px;
+  --r-lg:   22px;
+  --r-xl:   32px;
+  --r-pill: 999px;
+
+  /* ---------- SHADOWS ---------- */
+  --shadow-hairline: 0 0 0 1px var(--line);
+  --shadow-card:     0 1px 2px rgba(15,15,15,0.04), 0 6px 24px -8px rgba(15,15,15,0.08);
+  --shadow-card-lg:  0 2px 4px rgba(15,15,15,0.05), 0 18px 40px -12px rgba(15,15,15,0.16);
+  --shadow-pop:      0 8px 22px -10px rgba(31,163,74,0.45);
+  --shadow-pop-lg:   0 14px 32px -10px rgba(31,163,74,0.55);
+  --shadow-pop-red:  0 8px 22px -10px rgba(230,57,70,0.45);
+
+  /* ---------- MOTION ---------- */
+  --ease-out-quart: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --ease-in-out:    cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-fast:   150ms;
+  --dur-base:   250ms;
+  --dur-slow:   450ms;
+
+  /* ---------- LAYOUT ---------- */
+  --maxw-prose:   65ch;
+  --maxw-content: 1200px;
+  --maxw-wide:    1440px;
+  --gutter:       clamp(16px, 4vw, 32px);
+  --header-h:     64px;
+  --mobile-cta-h: 64px;
+}
+
+/* ============================================================
+   SEMANTIC ELEMENT RULES
+   These map raw tokens onto HTML so unstyled markup looks right.
+   ============================================================ */
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--font-text);
+  font-size: var(--t-body);
+  line-height: var(--lh-normal);
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  color: var(--ink);
+  margin: 0;
+  text-wrap: balance;
+  font-variation-settings: "opsz" 96;
+  letter-spacing: var(--tracking-snug);
+  line-height: var(--lh-snug);
+}
+
+h1 { font-size: var(--t-h1); font-weight: 700; letter-spacing: var(--tracking-tight); line-height: var(--lh-tight); }
+h2 { font-size: var(--t-h2); font-weight: 700; }
+h3 { font-size: var(--t-h3); font-weight: 600; }
+h4 { font-size: var(--t-h4); font-weight: 600; }
+
+p  { margin: 0; line-height: var(--lh-relaxed); text-wrap: pretty; }
+
+small { font-size: var(--t-small); color: var(--ink-2); }
+
+a {
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  text-decoration-color: color-mix(in oklab, var(--link), transparent 60%);
+  transition: text-decoration-color var(--dur-fast) var(--ease-in-out);
+}
+a:hover { text-decoration-color: var(--link); }
+
+button { font-family: inherit; }
+
+::selection { background: var(--caution); color: var(--ink); }
+
+*:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Utility — eyebrow label */
+.eyebrow {
+  font-family: var(--font-text);
+  font-size: var(--t-xs);
+  font-weight: 700;
+  letter-spacing: var(--tracking-cap);
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+
+/* Utility — traffic light dots, exactly as in the logo */
+.tri-light {
+  display: inline-flex;
+  gap: 4px;
+  vertical-align: middle;
+}
+.tri-light::before,
+.tri-light::after,
+.tri-light > i {
+  content: "";
+  display: inline-block;
+  width: 10px; height: 10px;
+  border-radius: 2px;
+  background: var(--stop);
+}
+.tri-light > i { background: var(--caution); }
+.tri-light::after { background: var(--go); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

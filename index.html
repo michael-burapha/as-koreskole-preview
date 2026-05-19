@@ -359,7 +359,7 @@
     gap: var(--s-5);
   }
   /* Mobile: start card first, then hero text */
-  .hero-left  { display: flex; flex-direction: column; order: 0; }
+  .hero-left  { display: flex; flex-direction: column; order: 0; min-width: 0; }
   .start-card { order: 1; }
 
   /* ============================================================
@@ -495,6 +495,7 @@
     margin-bottom: var(--s-5);
   }
   .hero-eyebrow .tri-light { transform: translateY(0); }
+  .eyebrow-extra { display: none; }
 
   .hero h1 {
     font-family: var(--font-display);
@@ -1104,6 +1105,7 @@
      MEDIA QUERIES — progressive enhancement to larger screens
      ============================================================ */
   @media (min-width: 768px) {
+    .eyebrow-extra { display: inline; }
     .scroll-hint { display: block; }
     .trust-row    { grid-template-columns: repeat(4, 1fr); }
     .courses-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1194,7 +1196,7 @@
     <div class="hero-left">
       <span class="hero-eyebrow">
         <span class="tri-light" aria-hidden="true"><i></i></span>
-        Køreskole på Østerbro, København &middot; Siden 2000
+        Køreskole på Østerbro<span class="eyebrow-extra">, København &middot; Siden 2000</span>
       </span>
 
       <h1 id="hero-title" data-i18n="hero.title">

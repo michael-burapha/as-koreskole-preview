@@ -278,6 +278,7 @@
   const course = params.get('course') || '';
   const lang   = params.get('lang')   || '';
   const time   = params.get('time')   || '';
+  const ul     = params.get('ul')     || 'da';  // site UI language
 
   const meta = document.getElementById('course-meta');
   if (date || course) {
@@ -333,28 +334,38 @@
   };
 
   let currentLang = 'da';
+
+  function switchToEN() {
+    currentLang = 'en';
+    document.documentElement.lang = 'en';
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.dataset.i18n;
+      if (dict.en[key]) el.textContent = dict.en[key];
+    });
+    document.querySelectorAll('#course-meta [data-i18n]').forEach(el => {
+      const key = el.dataset.i18n;
+      if (dict.en[key]) el.textContent = dict.en[key];
+    });
+    const badge = document.querySelector('.lang-badge.en');
+    if (badge) badge.innerHTML = '🇬🇧 English only';
+    const badgeDa = document.querySelector('.lang-badge.da');
+    if (badgeDa) badgeDa.innerHTML = '🇩🇰 Danish only';
+    document.title = 'Sign up — AS Køreskole';
+    // Update toggle buttons
+    document.querySelectorAll('.lang-toggle button').forEach(b => {
+      b.setAttribute('aria-pressed', b.dataset.lang === 'en' ? 'true' : 'false');
+    });
+  }
+
+  // Auto-switch to English if the user came from the English site
+  if (ul === 'en') switchToEN();
+
   const buttons = document.querySelectorAll('.lang-toggle button');
   buttons.forEach(b => b.addEventListener('click', () => {
-    currentLang = b.dataset.lang;
+    const newLang = b.dataset.lang;
     buttons.forEach(x => x.setAttribute('aria-pressed', x === b ? 'true' : 'false'));
-    document.documentElement.lang = currentLang;
-
-    if (currentLang === 'en') {
-      document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.dataset.i18n;
-        if (dict.en[key]) el.textContent = dict.en[key];
-      });
-      // Update meta labels
-      document.querySelectorAll('#course-meta [data-i18n]').forEach(el => {
-        const key = el.dataset.i18n;
-        if (dict.en[key]) el.textContent = dict.en[key];
-      });
-      // Fix lang badge text
-      const badge = document.querySelector('.lang-badge.en');
-      if (badge) badge.innerHTML = '🇬🇧 English only';
-      const badgeDa = document.querySelector('.lang-badge.da');
-      if (badgeDa) badgeDa.innerHTML = '🇩🇰 Danish only';
-      document.title = 'Sign up — AS Køreskole';
+    if (newLang === 'en') {
+      switchToEN();
     } else {
       location.reload();
     }

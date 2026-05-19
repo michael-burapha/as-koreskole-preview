@@ -620,16 +620,6 @@
     }
   }));
 
-  // Mobile drawer
-  const drawer = document.getElementById('drawer');
-  document.getElementById('open-menu').addEventListener('click', () => {
-    drawer.classList.add('open');
-    drawer.setAttribute('aria-hidden', 'false');
-  });
-  drawer.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', () => {
-    drawer.classList.remove('open');
-    drawer.setAttribute('aria-hidden', 'true');
-  }));
 </script>
 
 <div class="drawer" id="drawer" aria-hidden="true">
@@ -654,6 +644,19 @@
     </div>
   </aside>
 </div>
+
+<script>
+  // Mobile drawer — must run after drawer HTML is in the DOM
+  const drawer = document.getElementById('drawer');
+  document.getElementById('open-menu').addEventListener('click', () => {
+    drawer.classList.add('open');
+    drawer.setAttribute('aria-hidden', 'false');
+  });
+  drawer.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', () => {
+    drawer.classList.remove('open');
+    drawer.setAttribute('aria-hidden', 'true');
+  }));
+</script>
 
 </body>
 </html>

@@ -341,7 +341,6 @@
   .hero {
     position: relative;
     isolation: isolate;
-    min-height: min(92vh, 700px);
     color: white;
     overflow: hidden;
   }
@@ -361,12 +360,11 @@
   }
   .hero-inner {
     position: relative;
-    padding-top: clamp(28px, 5vh, 64px);
-    padding-bottom: clamp(80px, 10vh, 120px);
+    padding-top: 20px;
+    padding-bottom: 80px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    min-height: min(92vh, 700px);
     gap: var(--s-5);
   }
   /* Mobile: start card first, then hero text */
@@ -1140,7 +1138,7 @@
       justify-content: space-between;
       min-height: 92vh;
       padding-top: clamp(48px, 8vh, 96px);
-      padding-bottom: clamp(80px, 10vh, 120px);
+      padding-bottom: clamp(100px, 12vh, 140px);
       gap: var(--s-7);
     }
     .hero-left  { flex: 1; max-width: 620px; order: 0; }

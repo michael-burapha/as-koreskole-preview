@@ -52,6 +52,15 @@
     background: var(--ink); color: var(--paper); border-color: var(--ink);
   }
 
+  /* ---- NAV ---- */
+  .nav-desktop { display: none; gap: var(--s-5); }
+  @media (min-width: 768px) { .nav-desktop { display: flex; } }
+  .nav-desktop a {
+    color: var(--ink); font-weight: 500; font-size: 0.95rem;
+    text-decoration: none; padding: 6px 2px;
+  }
+  .nav-desktop a:hover { color: var(--go-strong); }
+
   /* ---- PAGE LAYOUT ---- */
   .page-wrap {
     min-height: calc(100vh - var(--header-h));
@@ -201,6 +210,13 @@
       <a class="brand" href="new-homepage.html">
         <img src="assets/logo.png" alt="AS Køreskole" />
       </a>
+      <nav class="nav-desktop">
+        <a href="new-homepage.html#priser" data-i18n="nav.prices">Priser</a>
+        <a href="hold-start.html" data-i18n="nav.start">Hold Start</a>
+        <a href="foerstehjaelp.html" data-i18n="nav.firstaid">Førstehjælp</a>
+        <a href="new-homepage.html#faq" data-i18n="nav.faq">FAQ</a>
+        <a href="new-homepage.html#kontakt" data-i18n="nav.contact">Kontakt</a>
+      </nav>
       <div class="lang-toggle" role="group" aria-label="Sprog / Language">
         <button data-lang="da" aria-pressed="true">DA</button>
         <button data-lang="en" aria-pressed="false">EN</button>
@@ -315,6 +331,7 @@
   // --- Language toggle ---
   const dict = {
     en: {
+      "nav.prices": "Pricing", "nav.start": "Course Start", "nav.faq": "FAQ", "nav.firstaid": "First aid", "nav.contact": "Contact",
       "form.signing":   "You are signing up for",
       "form.h1":        "Sign up",
       "form.sub":       "Fill in your details below. We'll confirm your spot as soon as possible — usually the same day.",
@@ -360,12 +377,13 @@
     });
   }
 
-  // Auto-switch to English if the user came from the English site
-  if (ul === 'en') switchToEN();
+  // Auto-switch to English if URL param says so, or if user previously chose EN
+  if (ul === 'en' || localStorage.getItem('ask_lang') === 'en') switchToEN();
 
   const buttons = document.querySelectorAll('.lang-toggle button');
   buttons.forEach(b => b.addEventListener('click', () => {
     const newLang = b.dataset.lang;
+    localStorage.setItem('ask_lang', newLang);
     buttons.forEach(x => x.setAttribute('aria-pressed', x === b ? 'true' : 'false'));
     if (newLang === 'en') {
       switchToEN();

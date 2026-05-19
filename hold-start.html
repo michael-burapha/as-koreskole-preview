@@ -504,6 +504,28 @@
     }
   };
 
+  // Auto-switch to English if arriving from the English site
+  function activateEN() {
+    document.documentElement.lang = 'en';
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.dataset.i18n;
+      if (dict.en[key]) el.textContent = dict.en[key];
+    });
+    document.querySelectorAll('.item-cta').forEach(a => {
+      a.href = a.href.replace('ul=da', 'ul=en');
+      const textNode = a.firstChild;
+      if (textNode && textNode.nodeType === 3) textNode.textContent = 'Sign up ';
+    });
+    document.querySelector('a[href="tilmelding.html?ul=da"]')?.setAttribute('href', 'tilmelding.html?ul=en');
+    document.title = 'Course Start Dates — AS Køreskole';
+    document.querySelectorAll('.lang-toggle button').forEach(b => {
+      b.setAttribute('aria-pressed', b.dataset.lang === 'en' ? 'true' : 'false');
+    });
+  }
+
+  const ulParam = new URLSearchParams(window.location.search).get('ul');
+  if (ulParam === 'en') activateEN();
+
   const buttons = document.querySelectorAll('.lang-toggle button');
   buttons.forEach(b => b.addEventListener('click', () => {
     const lang = b.dataset.lang;

@@ -1210,7 +1210,7 @@
       </p>
 
       <div class="hero-cta-row">
-        <a href="#tilmeld" class="btn btn-go btn-lg" data-i18n="hero.primary">
+        <a href="hold-start.html?ul=da" class="btn btn-go btn-lg" data-i18n="hero.primary">
           Tilmeld dig nu
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </a>
@@ -1893,16 +1893,16 @@
         const en = dict.en[el.dataset.i18n];
         if (en) el.innerHTML = en;
       });
-      // Flip ul=da → ul=en on all signup links so the form opens in English
-      document.querySelectorAll('a[href*="tilmelding.html"]').forEach(a => {
+      // Flip ul=da → ul=en on all signup/start links
+      document.querySelectorAll('a[href*="tilmelding.html"], a[href*="hold-start.html"]').forEach(a => {
         a.href = a.href.replace('ul=da', 'ul=en');
       });
     } else {
       document.querySelectorAll("[data-i18n]").forEach(el => {
         if (el.dataset.da) el.innerHTML = el.dataset.da;
       });
-      // Flip ul=en → ul=da on all signup links
-      document.querySelectorAll('a[href*="tilmelding.html"]').forEach(a => {
+      // Flip ul=en → ul=da on all signup/start links
+      document.querySelectorAll('a[href*="tilmelding.html"], a[href*="hold-start.html"]').forEach(a => {
         a.href = a.href.replace('ul=en', 'ul=da');
       });
     }

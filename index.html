@@ -341,7 +341,7 @@
   .hero {
     position: relative;
     isolation: isolate;
-    min-height: 92vh;
+    min-height: min(92vh, 700px);
     color: white;
     overflow: hidden;
   }
@@ -361,12 +361,12 @@
   }
   .hero-inner {
     position: relative;
-    padding-top: clamp(48px, 8vh, 96px);
-    padding-bottom: clamp(100px, 12vh, 140px);
+    padding-top: clamp(28px, 5vh, 64px);
+    padding-bottom: clamp(80px, 10vh, 120px);
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    min-height: 92vh;
+    justify-content: flex-start;
+    min-height: min(92vh, 700px);
     gap: var(--s-5);
   }
   /* Mobile: start card first, then hero text */
@@ -1133,10 +1133,13 @@
     .nav-desktop { display: inline-flex; }
     .menu-btn    { display: none; }
     .mobile-cta  { display: none; }
+    .hero        { min-height: 92vh; }
     .hero-inner  {
       flex-direction: row;
       align-items: flex-end;
       justify-content: space-between;
+      min-height: 92vh;
+      padding-top: clamp(48px, 8vh, 96px);
       padding-bottom: clamp(80px, 10vh, 120px);
       gap: var(--s-7);
     }

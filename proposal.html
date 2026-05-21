@@ -359,6 +359,38 @@
     .cover { padding: 40px 24px; }
     .section { padding: 60px 24px; }
     .sticky-nav { padding: 0 16px; }
+
+    /* ── Mobile tables → card stack ── */
+    .data-table thead { display: none; }
+    .data-table, .data-table tbody, .data-table tr, .data-table td {
+      display: block;
+      width: 100%;
+    }
+    .data-table tr {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      margin-bottom: 12px;
+      padding: 4px 0;
+    }
+    .data-table tr:nth-child(even) td { background: transparent; }
+    .data-table td {
+      padding: 10px 16px;
+      border-bottom: 1px dashed var(--border);
+      font-size: 13px;
+      position: relative;
+    }
+    .data-table td:last-child { border-bottom: none; }
+    .data-table td[data-label]::before {
+      content: attr(data-label);
+      display: block;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--green);
+      margin-bottom: 4px;
+    }
   }
 
   /* ── HIGHLIGHT BOX ── */
@@ -1407,17 +1439,19 @@
   </div>
   <h2 class="section-title">A phased approach. <em>Results before commitment.</em></h2>
   <p class="section-intro">
-    We recommend starting with the technical fixes and the core English page rebuild — these have the fastest impact and the lowest risk. The content and AIO programme follows once the foundation is solid. The new website can run in parallel or follow as a separate phase.
+    Two clear paths — fix and optimise the existing site, or replace it with a faster, better-structured new one. Both include the same content and AIO programme from Phase 2 onwards. Prices are fixed; no hidden extras.
   </p>
+
+  <h3 style="font-size:15px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); margin-bottom:20px; padding-bottom:10px; border-bottom:2px solid var(--border);">Existing Website</h3>
 
   <div class="pricing-grid">
     <div class="pricing-card">
       <div class="pricing-phase">Phase 1 · Month 1</div>
       <div class="pricing-name">Technical Foundation</div>
-      <div class="pricing-price">4.500</div>
-      <div class="pricing-period">DKK · one-time</div>
+      <div class="pricing-price">5.000</div>
+      <div class="pricing-period">DKK · one-time · existing site</div>
       <ul class="pricing-list">
-        <li>Full SEO & AIO audit</li>
+        <li>Full SEO & AIO audit of current site</li>
         <li>All hreflang / schema / og fixes</li>
         <li>English page full rebuild (1,200+ words)</li>
         <li>Meta rewrites — all key pages</li>
@@ -1458,40 +1492,60 @@
 
   <div class="divider"></div>
 
-  <h3 style="font-size:16px; font-weight:700; margin-bottom:16px;">New website — separate line item</h3>
+  <h3 style="font-size:15px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); margin-bottom:20px; padding-bottom:10px; border-bottom:2px solid var(--border);">New Website</h3>
 
-  <div class="two-col">
-    <div>
-      <div class="pricing-card" style="text-align:left;">
-        <div class="pricing-phase">Website · Option A</div>
-        <div class="pricing-name">New site + Lion Digital maintains</div>
-        <div class="pricing-price" style="font-size:26px;">On request</div>
-        <div class="pricing-period">Build price + monthly upkeep included in retainer</div>
-        <ul class="pricing-list" style="margin-top:12px;">
-          <li>Full custom site built to prototype spec</li>
-          <li>Lion Digital manages all updates</li>
-          <li>Hold-start dates, prices, content — all handled</li>
-          <li>No WordPress, no plugins, no maintenance headaches</li>
-        </ul>
+  <div class="pricing-grid">
+    <div class="pricing-card" style="position:relative; overflow:visible;">
+      <div style="position:absolute; top:-12px; right:16px; background:var(--gold); color:white; font-size:11px; font-weight:700; padding:4px 10px; border-radius:99px; letter-spacing:0.05em; text-transform:uppercase;">Special price</div>
+      <div class="pricing-phase">Phase 1 · New Site Build</div>
+      <div class="pricing-name">Full Custom Website</div>
+      <div style="display:flex; align-items:baseline; gap:12px; margin:12px 0 4px;">
+        <div class="pricing-price" style="margin:0;">4.500</div>
+        <div style="font-size:14px; color:var(--muted); text-decoration:line-through;">6.500</div>
       </div>
+      <div class="pricing-period">DKK · one-time build fee</div>
+      <ul class="pricing-list" style="margin-top:16px;">
+        <li>Built to prototype spec — fast, no WordPress</li>
+        <li>Full bilingual DA + EN from day one</li>
+        <li>SEO migration — all keywords preserved</li>
+        <li>301 redirects for every changed URL</li>
+        <li>Schema, hreflang, AIO-ready on launch</li>
+        <li>Mobile-first, conversion-optimised</li>
+        <li>Operations guide or Lion Digital retainer</li>
+      </ul>
     </div>
-    <div>
-      <div class="pricing-card" style="text-align:left;">
-        <div class="pricing-phase">Website · Option B</div>
-        <div class="pricing-name">New site + self-managed with guide</div>
-        <div class="pricing-price" style="font-size:26px;">On request</div>
-        <div class="pricing-period">Build price + PDF operations guide at handover</div>
-        <ul class="pricing-list" style="margin-top:12px;">
-          <li>Full custom site built to prototype spec</li>
-          <li>Plain-language guide for every updatable section</li>
-          <li>Hold-start, prices, blog — step-by-step with screenshots</li>
-          <li>No dependency on Lion Digital for day-to-day updates</li>
-        </ul>
-      </div>
+
+    <div class="pricing-card featured">
+      <div class="pricing-phase">Phase 2 · Months 2–4</div>
+      <div class="pricing-name">Content & AIO Programme</div>
+      <div class="pricing-price">9.000</div>
+      <div class="pricing-period">DKK · one-time for 3 months</div>
+      <ul class="pricing-list">
+        <li>6 SEO + AIO-optimised blog articles</li>
+        <li>FAQ schema on all new pages</li>
+        <li>Seasonal content (winter push)</li>
+        <li>English review request system</li>
+        <li>2x Google My Business posts per month</li>
+        <li>Monthly performance report</li>
+      </ul>
+    </div>
+
+    <div class="pricing-card">
+      <div class="pricing-phase">Ongoing · From Month 4</div>
+      <div class="pricing-name">Monthly Retainer</div>
+      <div class="pricing-price">2.500</div>
+      <div class="pricing-period">DKK / month</div>
+      <ul class="pricing-list">
+        <li>2 new articles per month</li>
+        <li>Google My Business management & posts</li>
+        <li>Ranking & traffic monitoring</li>
+        <li>Seasonal campaign prep</li>
+        <li>Monthly performance report</li>
+      </ul>
     </div>
   </div>
 
-  <p style="font-size:13px; color:var(--muted); margin-top:16px;">All prices excluding VAT. Phases can be adjusted based on scope and budget. Website pricing is quoted individually after a scoping conversation — no surprises.</p>
+  <p style="font-size:13px; color:var(--muted); margin-top:16px;">All prices excluding VAT. Phases can be adjusted based on scope and budget. The special new website price applies when booked together with Phase 2.</p>
 </section>
 
 <!-- ══ 09 NEXT STEPS ══ -->
@@ -1502,7 +1556,7 @@
   </div>
   <h2 class="section-title">Tell us where you are. <em>We'll take it from there.</em></h2>
   <p class="section-intro">
-    To give you an accurate scope and quote, it helps to know what's already in place. Tick what applies — and if you're unsure about any of it, just leave it blank and we'll check as part of the initial review.
+    To confirm scope and get started quickly, it helps to know what's already in place. Tick what applies below — the checklist goes directly to Lion Digital. If you're unsure about any item, just leave it blank and we'll verify it as part of the initial review.
   </p>
 
   <!-- ── CHECKLIST ── -->
@@ -1631,8 +1685,8 @@
     <div class="timeline-item">
       <div class="timeline-dot">1</div>
       <div class="timeline-content">
-        <h4>We review what you've shared</h4>
-        <p>Your checklist above, plus a quick look at the current site, gives us everything needed to come back with a clear scope, timeline, and fixed price — no surprises.</p>
+        <h4>We review your checklist and confirm start</h4>
+        <p>Once your checklist comes through, we review your current site, confirm access details, and reply within 24 hours with a confirmed start date. No back-and-forth needed.</p>
       </div>
     </div>
     <div class="timeline-item">
@@ -1665,15 +1719,12 @@
     </div>
   </div>
 
-  <!-- ── EMAIL CTA ── -->
+  <!-- ── CTA ── -->
   <div class="highlight-green" style="margin-top:40px;">
-    <h3>Ready to move forward — or just have a question?</h3>
-    <p style="margin-bottom:20px;">No forms to fill, no sales process. Just send an email and we'll come back to you with a clear proposal within 24 hours.</p>
-    <a href="mailto:michael@liondigitalmarketing.com?subject=AS%20Køreskole%20%E2%80%94%20Digital%20Proposal%20Enquiry&body=Hi%20Lion%20Digital%2C%0A%0AI%20have%20reviewed%20the%20proposal%20and%20would%20like%20to%20discuss%20next%20steps.%0A%0A"
-       style="display:inline-block; background:white; color:#157a35; font-weight:700; font-size:15px; padding:12px 28px; border-radius:8px; text-decoration:none; margin-right:12px; margin-bottom:10px;">
-      ✉ Send an email
-    </a>
-    <span style="color:rgba(255,255,255,0.6); font-size:13px; display:inline-block; vertical-align:middle;">michael@liondigitalmarketing.com</span>
+    <h3>Ready to move forward?</h3>
+    <p style="margin-bottom:12px;">This is the proposal. Everything you need to make a decision is here — pricing, scope, timeline, and what to expect at every stage.</p>
+    <p>To get started, simply fill in the checklist above and hit <strong>Send selection to Lion Digital</strong>. We will come back to you within 24 hours with a confirmed start date and any final questions.</p>
+    <p style="margin-top:16px; color:rgba(255,255,255,0.65); font-size:13px;">Prefer email? Reach us directly at <strong style="color:white;">michael@liondigitalmarketing.com</strong></p>
   </div>
 
   <div style="margin-top:32px; text-align:center;">
@@ -1841,6 +1892,16 @@
 
   // Init
   document.addEventListener('DOMContentLoaded', () => {
+  // Auto-inject data-label on all table cells for mobile card view
+  document.querySelectorAll('.data-table').forEach(table => {
+    const headers = [...table.querySelectorAll('thead th')].map(th => th.textContent.trim());
+    table.querySelectorAll('tbody tr').forEach(row => {
+      row.querySelectorAll('td').forEach((td, i) => {
+        if (headers[i]) td.setAttribute('data-label', headers[i]);
+      });
+    });
+  });
+
     document.getElementById('row-facebook')?.classList.add('active');
     updateSummary();
     document.querySelectorAll('.check-input').forEach(cb => {
